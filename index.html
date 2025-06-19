@@ -15,6 +15,8 @@
         <li><a href="#products">Menu</a></li>
         <li><a href="#about">Tentang Kami</a></li>
         <li><a href="#contact">Kontak</a></li>
+        <li><a href="#paket">Paket Menu</a></li>
+
       </ul>
     </nav>
   </header>
@@ -73,6 +75,92 @@
     </div>
   </section>
 
+
+  <section id="paket">
+  <h2>Paket Menu Acara</h2>
+  <div class="product-grid">
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80" alt="Paket Hajatan">
+      <h3>Paket Hajatan</h3>
+      <ul style="text-align:left; margin:0 auto 1rem auto; max-width: 220px;">
+        <li>50 Nasi Kotak</li>
+        <li>50 Es Teh</li>
+        <li>50 Camilan</li>
+      </ul>
+      <p><b>Harga:</b> Rp1.750.000</p>
+      <a href="https://wa.me/6282227336194?text=Halo%20saya%20ingin%20pesan%20Paket%20Hajatan%20(50%20Nasi,%2050%20Es%20Teh,%2050%20Camilan)" target="_blank" class="wa-btn">Pesan Paket Ini</a>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=400&q=80" alt="Paket Syukuran">
+      <h3>Paket Syukuran</h3>
+      <ul style="text-align:left; margin:0 auto 1rem auto; max-width: 220px;">
+        <li>30 Nasi Box</li>
+        <li>30 Ayam Goreng</li>
+        <li>30 Air Mineral</li>
+        <li>30 Buah Segar</li>
+      </ul>
+      <p><b>Harga:</b> Rp1.050.000</p>
+      <a href="https://wa.me/6282227336194?text=Halo%20saya%20ingin%20pesan%20Paket%20Syukuran%20(30%20Nasi%20Box,%2030%20Ayam,%2030%20Buah)" target="_blank" class="wa-btn">Pesan Paket Ini</a>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1432139555190-58524dae6a55?auto=format&fit=crop&w=400&q=80" alt="Paket Arisan">
+      <h3>Paket Arisan</h3>
+      <ul style="text-align:left; margin:0 auto 1rem auto; max-width: 220px;">
+        <li>20 Snack Box</li>
+        <li>20 Air Mineral</li>
+        <li>20 Kue Basah</li>
+      </ul>
+      <p><b>Harga:</b> Rp500.000</p>
+      <a href="https://wa.me/6282227336194?text=Halo%20saya%20ingin%20pesan%20Paket%20Arisan%20(20%20Snack%20Box,%2020%20Kue%20Basah)" target="_blank" class="wa-btn">Pesan Paket Ini</a>
+    </div>
+  </div>
+</section>
+
+
+<section id="custom-paket">
+  <h2>Paket Modifikasi (Custom)</h2>
+  <form id="customForm" style="max-width:400px;margin:0 auto;text-align:left;">
+    <label>Makanan:</label>
+    <select id="makanan" required>
+      <option value="" disabled selected>Pilih Makanan</option>
+      <option value="Nasi Ayam Goreng" data-harga="25000">Nasi Ayam Goreng (Rp25.000)</option>
+      <option value="Nasi Ikan Bakar" data-harga="30000">Nasi Ikan Bakar (Rp30.000)</option>
+      <option value="Nasi Rendang" data-harga="32000">Nasi Rendang (Rp32.000)</option>
+    </select>
+    <input type="number" id="qtyMakanan" min="1" value="1" placeholder="Jumlah" style="width:80px;" required>
+    <br><br>
+
+    <label>Minuman:</label>
+    <select id="minuman" required>
+      <option value="" disabled selected>Pilih Minuman</option>
+      <option value="Es Teh" data-harga="4000">Es Teh (Rp4.000)</option>
+      <option value="Air Mineral" data-harga="3000">Air Mineral (Rp3.000)</option>
+      <option value="Jus Jeruk" data-harga="8000">Jus Jeruk (Rp8.000)</option>
+    </select>
+    <input type="number" id="qtyMinuman" min="1" value="1" placeholder="Jumlah" style="width:80px;" required>
+    <br><br>
+
+    <label>Cemilan:</label>
+    <select id="cemilan">
+      <option value="" selected>Tidak Pakai Cemilan</option>
+      <option value="Risoles" data-harga="3500">Risoles (Rp3.500)</option>
+      <option value="Kue Basah" data-harga="4000">Kue Basah (Rp4.000)</option>
+      <option value="Lemper" data-harga="3500">Lemper (Rp3.500)</option>
+    </select>
+    <input type="number" id="qtyCemilan" min="1" value="1" placeholder="Jumlah" style="width:80px;">
+    <br><br>
+
+    <div style="margin-top:16px; margin-bottom:10px;">
+      <strong>Total Harga: </strong><span id="hargaTotal">Rp0</span><br>
+      <strong>Diskon 10%: </strong><span id="hargaDiskon">Rp0</span><br>
+      <strong>Harga Setelah Diskon: </strong><span id="hargaFinal">Rp0</span>
+    </div>
+
+    <button type="button" id="btnWa" class="wa-btn big" style="width:100%;">Hubungi Kami via WhatsApp</button>
+  </form>
+</section>
+
+
   <section id="about">
     <h2>Tentang Kami</h2>
     <p>
@@ -113,6 +201,62 @@
         }
       });
     });
+
+
+function formatRupiah(angka) {
+  return "Rp" + angka.toLocaleString('id-ID');
+}
+
+function updateHarga() {
+  let makananSelect = document.getElementById('makanan');
+  let makananHarga = makananSelect.selectedOptions[0]?.getAttribute('data-harga') || 0;
+  let qtyMakanan = parseInt(document.getElementById('qtyMakanan').value) || 0;
+
+  let minumanSelect = document.getElementById('minuman');
+  let minumanHarga = minumanSelect.selectedOptions[0]?.getAttribute('data-harga') || 0;
+  let qtyMinuman = parseInt(document.getElementById('qtyMinuman').value) || 0;
+
+  let cemilanSelect = document.getElementById('cemilan');
+  let cemilanHarga = cemilanSelect.selectedOptions[0]?.getAttribute('data-harga') || 0;
+  let qtyCemilan = cemilanSelect.value ? (parseInt(document.getElementById('qtyCemilan').value) || 0) : 0;
+
+  // hitung total
+  let total = (makananHarga * qtyMakanan) + (minumanHarga * qtyMinuman) + (cemilanHarga * qtyCemilan);
+  let diskon = Math.round(total * 0.10);
+  let final = total - diskon;
+
+  document.getElementById('hargaTotal').textContent = formatRupiah(total);
+  document.getElementById('hargaDiskon').textContent = formatRupiah(diskon);
+  document.getElementById('hargaFinal').textContent = formatRupiah(final);
+}
+
+['makanan','qtyMakanan','minuman','qtyMinuman','cemilan','qtyCemilan'].forEach(id=>{
+  document.getElementById(id).addEventListener('input', updateHarga);
+  document.getElementById(id).addEventListener('change', updateHarga);
+});
+updateHarga();
+
+document.getElementById('btnWa').onclick = function() {
+  let makanan = document.getElementById('makanan').value;
+  let qtyMakanan = document.getElementById('qtyMakanan').value;
+  let minuman = document.getElementById('minuman').value;
+  let qtyMinuman = document.getElementById('qtyMinuman').value;
+  let cemilan = document.getElementById('cemilan').value;
+  let qtyCemilan = document.getElementById('qtyCemilan').value;
+  let total = document.getElementById('hargaFinal').textContent;
+
+  let msg = `Halo, saya ingin pesan Paket Modifikasi:%0A
+- Makanan: ${makanan} x${qtyMakanan}
+- Minuman: ${minuman} x${qtyMinuman}`;
+  if (cemilan && cemilan !== "") {
+    msg += `%0A- Cemilan: ${cemilan} x${qtyCemilan}`;
+  }
+  msg += `%0A%0ATotal Setelah Diskon: ${total}`;
+
+  window.open(`https://wa.me/6282227336194?text=${msg}`, '_blank');
+};
+
+
   </script>
 </body>
 </html>
